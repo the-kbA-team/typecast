@@ -12,6 +12,7 @@
 namespace Tests\kbATeam\TypeCast\Exceptions;
 
 use kbATeam\TypeCast\Exceptions\InvalidTypeCastExeption;
+use kbATeam\TypeCast\ITypeCast;
 
 /**
  * Class Tests\kbATeam\TypeCast\Exceptions\InvalidValueExceptionTest
@@ -29,9 +30,10 @@ class InvalidValueExceptionTest extends \PHPUnit_Framework_TestCase
         $ex = new InvalidTypeCastExeption();
         $this->assertInstanceOf('Exception', $ex);
         $this->assertEquals(
-            'Only instances of kbATeam\TypeCast\TypeCastArray'
-            . ' or kbATeam\TypeCast\TypeCastObject'
-            . ' or kbATeam\TypeCast\TypeCastValue are allowed!',
+            sprintf(
+                'Only instances of %s are allowed!',
+                ITypeCast::class
+            ),
             $ex->getMessage()
         );
     }

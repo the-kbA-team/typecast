@@ -20,7 +20,7 @@ namespace kbATeam\TypeCast;
  * @author  Gregor J.
  * @license MIT
  */
-class TypeCastValue
+class TypeCastValue implements ITypeCast
 {
     /**
      * @var callable|\Closure
@@ -52,24 +52,6 @@ class TypeCastValue
     ];
 
     /**
-     * @var array of allowed array value types.
-     */
-    protected static $allowedValueTypes = [
-        TypeCastArray::class,
-        TypeCastObject::class,
-        TypeCastValue::class
-    ];
-
-    /**
-     * Return an array of allowed array key types.
-     * @return array
-     */
-    public static function allowedValueTypes()
-    {
-        return static::$allowedValueTypes;
-    }
-
-    /**
      * TypeCastValue constructor.
      * @param string|callable|\Closure $cast Either the name of a scalar type
      *                                       (string, double, float, integer, int,
@@ -90,31 +72,6 @@ class TypeCastValue
                 . ' type, a callable or a Closure.'
             );
         }
-    }
-
-    /**
-     * Cast the given value to the defined type.
-     * @param mixed $value
-     * @return mixed
-     */
-    public function cast($value)
-    {
-        return call_user_func($this->cast, $value);
-    }
-
-    /**
-     * Cast the given value to the defined type.
-     *
-     * The __invoke method is called when a script tries to call an object as a
-     * function.
-     *
-     * @param mixed $value
-     * @return mixed
-     * @link https://php.net/manual/en/language.oop5.magic.php#language.oop5.magic.invoke
-     */
-    public function __invoke($value)
-    {
-        return $this->cast($value);
     }
 
     /**
@@ -143,6 +100,42 @@ class TypeCastValue
                 throw new \LogicException(sprintf('Unexpected type %s', $type));
         }
         //@codeCoverageIgnoreEnd
+    }
+
+    /**
+     * Cast the given value to the type defined in this class.
+     *
+     * @param mixed $value The raw data to be typecasted.
+     * @return mixed The same data structure as the input, but casted to the
+     *                                   typecasting information defined in this
+     *                                   class.
+     * @throws \InvalidArgumentException in case the given value does not match the
+     *                                   typecasting information defined in this
+     *                                   class.
+     */
+    public function cast($value)
+    {
+        return call_user_func($this->cast, $value);
+    }
+
+    /**
+     * Cast the given values to the type defined in this class.
+     *
+     * The __invoke method is called when a script tries to call an object as a
+     * function.
+     *
+     * @param mixed $value The raw data to be typecasted.
+     * @return mixed The same data structure as the input, but casted to the
+     *                                   typecasting information defined in this
+     *                                   class.
+     * @throws \InvalidArgumentException in case the given value does not match the
+     *                                   typecasting information defined in this
+     *                                   class.
+     * @link https://php.net/manual/en/language.oop5.magic.php#language.oop5.magic.invoke
+     */
+    public function __invoke($value)
+    {
+        return $this->cast($value);
     }
 
     /**

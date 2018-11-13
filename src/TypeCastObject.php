@@ -23,7 +23,7 @@ use kbATeam\TypeCast\Exceptions\PropertyNameNotFoundException;
  * @author  Gregor J.
  * @license MIT
  */
-class TypeCastObject
+class TypeCastObject implements ITypeCast
 {
     /**
      * @var array of array keys and their types.
@@ -56,10 +56,16 @@ class TypeCastObject
     }
 
     /**
-     * Cast the properties of an object according to this internal definitions.
-     * @param object $object
-     * @return object
-     * @throws \InvalidArgumentException
+     * Cast the public values of the given object to the typecast information
+     * defined in this class.
+     *
+     * @param object $object The raw data to be typecasted.
+     * @return object The same data structure as the input, but casted to the
+     *                                   typecasting information defined in this
+     *                                   class.
+     * @throws \InvalidArgumentException in case the given value does not match the
+     *                                   typecasting information defined in this
+     *                                   class.
      */
     public function cast($object)
     {
@@ -88,12 +94,31 @@ class TypeCastObject
     }
 
     /**
+     * Cast the public values of the given object to the typecast information
+     * defined in this class.
+     *
+     * The __invoke method is called when a script tries to call an object as a
+     * function.
+     *
+     * @param object $object The raw data to be typecasted.
+     * @return object The same data structure as the input, but casted to the
+     *                                   typecasting information defined in this
+     *                                   class.
+     * @throws \InvalidArgumentException in case the given value does not match the
+     *                                   typecasting information defined in this
+     *                                   class.
+     * @link https://php.net/manual/en/language.oop5.magic.php#language.oop5.magic.invoke
+     */
+    public function __invoke($object)
+    {
+        return $this->cast($object);
+    }
+
+    /**
      * is utilized for reading data from inaccessible members.
      *
      * @param $name string
-     * @return \kbATeam\TypeCast\TypeCastValue
-     *         |\kbATeam\TypeCast\TypeCastArray
-     *         |\kbATeam\TypeCast\TypeCastObject
+     * @return \kbATeam\TypeCast\ITypeCast
      * @throws \kbATeam\TypeCast\Exceptions\PropertyNameNotFoundException
      * @link https://php.net/manual/en/language.oop5.overloading.php#language.oop5.overloading.members
      */
@@ -109,9 +134,7 @@ class TypeCastObject
      * run when writing data to inaccessible members.
      *
      * @param $name  string
-     * @param $object \kbATeam\TypeCast\TypeCastValue
-     *               |\kbATeam\TypeCast\TypeCastArray
-     *               |\kbATeam\TypeCast\TypeCastObject
+     * @param $object \kbATeam\TypeCast\ITypeCast
      * @return void
      * @throws \kbATeam\TypeCast\Exceptions\InvalidTypeCastExeption
      * @link https://php.net/manual/en/language.oop5.overloading.php#language.oop5.overloading.members
@@ -119,7 +142,7 @@ class TypeCastObject
     public function __set($name, $object)
     {
         if (!is_object($object)
-            || !in_array(get_class($object), TypeCastValue::allowedValueTypes(), true)
+            || !$object instanceof ITypeCast
         ) {
             throw new InvalidTypeCastExeption();
         }
@@ -148,18 +171,5 @@ class TypeCastObject
     public function __unset($name)
     {
         unset($this->map[$name]);
-    }
-
-    /**
-     * The __invoke method is called when a script tries to call an object as a
-     * function.
-     * @param object $object
-     * @return object
-     * @throws \InvalidArgumentException
-     * @link https://php.net/manual/en/language.oop5.magic.php#language.oop5.magic.invoke
-     */
-    public function __invoke($object)
-    {
-        return $this->cast($object);
     }
 }

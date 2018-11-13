@@ -26,7 +26,7 @@ use kbATeam\TypeCast\Exceptions\KeyNotFoundException;
  * @author  Gregor J.
  * @license MIT
  */
-class TypeCastArray implements \ArrayAccess
+class TypeCastArray implements ITypeCast, \ArrayAccess
 {
     /**
      * @var array of array keys and their types.
@@ -51,7 +51,8 @@ class TypeCastArray implements \ArrayAccess
     }
 
     /**
-     * @param $key
+     * Validate the datatype of the array key.
+     * @param mixed $key
      * @throws \kbATeam\TypeCast\Exceptions\InvalidKeyException
      */
     protected static function validateKey($key)
@@ -70,10 +71,16 @@ class TypeCastArray implements \ArrayAccess
     }
 
     /**
-     * Cast the data of an array according to its internal definitions.
-     * @param array $array
-     * @return array
-     * @throws \InvalidArgumentException
+     * Cast the values of the given array to the typecast information defined in this
+     * class.
+     *
+     * @param array $array The raw data to be typecasted.
+     * @return array The same data structure as the input, but casted to the
+     *                                   typecasting information defined in this
+     *                                   class.
+     * @throws \InvalidArgumentException in case the given value does not match the
+     *                                   typecasting information defined in this
+     *                                   class.
      */
     public function cast($array)
     {
@@ -122,14 +129,19 @@ class TypeCastArray implements \ArrayAccess
     }
 
     /**
-     * Cast the data of an array according to its internal definitions.
+     * Cast the values of the given array to the typecast information defined in this
+     * class.
      *
      * The __invoke method is called when a script tries to call an object as a
      * function.
      *
-     * @param array $array
-     * @return array
-     * @throws \InvalidArgumentException
+     * @param array $array The raw data to be typecasted.
+     * @return array The same data structure as the input, but casted to the
+     *                                   typecasting information defined in this
+     *                                   class.
+     * @throws \InvalidArgumentException in case the given value does not match the
+     *                                   typecasting information defined in this
+     *                                   class.
      * @link https://php.net/manual/en/language.oop5.magic.php#language.oop5.magic.invoke
      */
     public function __invoke($array)
@@ -158,9 +170,7 @@ class TypeCastArray implements \ArrayAccess
      * Offset to retrieve
      * @link  https://php.net/manual/en/arrayaccess.offsetget.php
      * @param string|int $offset The offset to retrieve.
-     * @return \kbATeam\TypeCast\TypeCastValue
-     *         |\kbATeam\TypeCast\TypeCastArray
-     *         |\kbATeam\TypeCast\TypeCastObject
+     * @return \kbATeam\TypeCast\ITypeCast
      * @since 5.0.0
      * @throws \kbATeam\TypeCast\Exceptions\InvalidKeyException
      * @throws \kbATeam\TypeCast\Exceptions\KeyNotFoundException
@@ -177,9 +187,7 @@ class TypeCastArray implements \ArrayAccess
      * Offset to set
      * @link  https://php.net/manual/en/arrayaccess.offsetset.php
      * @param string|int $offset The offset to assign the value to.
-     * @param \kbATeam\TypeCast\TypeCastValue
-     *        |\kbATeam\TypeCast\TypeCastArray
-     *        |\kbATeam\TypeCast\TypeCastObject $typeCast  The value to set.
+     * @param \kbATeam\TypeCast\ITypeCast $typeCast  The value to set.
      * @return void
      * @since 5.0.0
      * @throws \kbATeam\TypeCast\Exceptions\InvalidKeyException
@@ -189,7 +197,7 @@ class TypeCastArray implements \ArrayAccess
     {
         static::validateKey($offset);
         if (!is_object($typeCast)
-            || !in_array(get_class($typeCast), TypeCastValue::allowedValueTypes(), true)
+            || !$typeCast instanceof ITypeCast
         ) {
             throw new InvalidTypeCastExeption();
         }

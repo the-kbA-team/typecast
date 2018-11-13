@@ -12,7 +12,7 @@
 
 namespace kbATeam\TypeCast\Exceptions;
 
-use kbATeam\TypeCast\TypeCastValue;
+use kbATeam\TypeCast\ITypeCast;
 use Throwable;
 
 /**
@@ -41,7 +41,7 @@ class InvalidTypeCastExeption extends \Exception
     ) {
         $message = sprintf(
             'Only instances of %s are allowed!',
-            implode(' or ', TypeCastValue::allowedValueTypes())
+            ITypeCast::class
         );
         parent::__construct($message, $code, $previous);
     }

@@ -13,6 +13,7 @@ namespace Tests\kbATeam\TypeCast;
 
 use kbATeam\TypeCast\Exceptions\InvalidTypeCastExeption;
 use kbATeam\TypeCast\Exceptions\PropertyNameNotFoundException;
+use kbATeam\TypeCast\ITypeCast;
 use kbATeam\TypeCast\TypeCastObject;
 use kbATeam\TypeCast\TypeCastValue;
 
@@ -53,7 +54,7 @@ class TypeCastObjectTest extends \PHPUnit_Framework_TestCase
             InvalidTypeCastExeption::class,
             sprintf(
                 'Only instances of %s are allowed!',
-                implode(' or ', TypeCastValue::allowedValueTypes())
+                ITypeCast::class
             )
         );
         $obj->x = $value;
