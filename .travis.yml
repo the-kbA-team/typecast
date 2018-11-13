@@ -8,7 +8,7 @@ php:
 - 7.2
 env:
   global:
-  - CC_TEST_REPORTER_ID=
+  - CC_TEST_REPORTER_ID=d5a74f5411788414bf67e79920fe38e00d5206f408ac2f854743262305780c0b
   - GIT_COMMITTED_AT=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then git log -1 --pretty=format:%ct; else git log -1 --skip 1 --pretty=format:%ct; fi)
 before_script:
 - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
