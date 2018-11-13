@@ -5,7 +5,7 @@
 [![Maintainability][maintainability-badge]][maintainability]
 [![Test Coverage][coverage-badge]][coverage]
 
-Cast any given data structure into any desired format.
+Typecast the values of any given data structure.
 
 ## Installation
 

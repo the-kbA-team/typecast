@@ -1,6 +1,6 @@
 {
   "name": "kba-team/typecast",
-  "description": "Cast any given data structure into any desired format.",
+  "description": "Typecast the values of any given data structure.",
   "type": "library",
   "license": "MIT",
   "authors": [
