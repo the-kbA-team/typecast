@@ -191,33 +191,4 @@ class TypeCastArrayTest extends \PHPUnit_Framework_TestCase
         );
         $cast(['a' => $value]);
     }
-
-    public function testReadme()
-    {
-
-        //prepare typecast rules
-        $cast = new TypeCastArray();
-        $cast['myIntValue'] = new TypeCastValue('integer');
-        $cast['myFloatValues'] = new TypeCastArray();
-        $cast['myFloatValues'][0] = new TypeCastValue('float');
-        $cast['mySettings'] = new TypeCastArray();
-        $cast['mySettings']['a'] = new TypeCastValue('boolean');
-        $cast['mySettings']['b'] = new TypeCastValue('boolean');
-
-        //the raw data array
-        $raw_data = [
-            'myIntValue' => ' 123    ',
-            'myFloatValues' => [
-                '  3.00',
-                '  4.50'
-            ],
-            'mySettings' => [
-                'a' => '0',
-                'b' => '1'
-            ]
-        ];
-
-        $data = $cast($raw_data);
-        echo serialize($data);
-    }
 }
