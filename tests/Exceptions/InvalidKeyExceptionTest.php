@@ -2,7 +2,7 @@
 /**
  * File tests/Exceptions/InvalidKeyExceptionTest.php
  *
- * DESCRIPTION
+ * Test the invalid key exception.
  *
  * @package typecast
  * @author  Gregor J.
@@ -16,7 +16,7 @@ use kbATeam\TypeCast\Exceptions\InvalidKeyException;
 /**
  * Class Tests\kbATeam\TypeCast\Exceptions\InvalidKeyExceptionTest
  *
- * DESCRIPTION
+ * Test the invalid key exception.
  *
  * @package Tests\kbATeam\TypeCast\Exceptions
  * @author  Gregor J.

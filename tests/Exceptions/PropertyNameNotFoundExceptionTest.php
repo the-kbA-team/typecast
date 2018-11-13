@@ -1,8 +1,8 @@
 <?php
 /**
- * File src/PropertyNameNotFoundExceptionTest.php
+ * File tests/Exceptions/PropertyNameNotFoundExceptionTest.php
  *
- * DESCRIPTION
+ * Test the object property not found exception.
  *
  * @package typecast
  * @author  Gregor J.
@@ -16,7 +16,7 @@ use kbATeam\TypeCast\Exceptions\PropertyNameNotFoundException;
 /**
  * Class Tests\kbATeam\TypeCast\Exceptions\PropertyNameNotFoundExceptionTest
  *
- * DESCRIPTION
+ * Test the object property not found exception.
  *
  * @package Tests\kbATeam\TypeCast\Exceptions
  * @author  Gregor J.

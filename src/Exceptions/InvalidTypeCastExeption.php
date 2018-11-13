@@ -2,7 +2,8 @@
 /**
  * File src/Exceptions/InvalidValueException.php
  *
- * DESCRIPTION
+ * Exception thrown in case an invalid typecast is being assigned to an typecast
+ * array or object.
  *
  * @package typecast
  * @author  Gregor J.
@@ -11,14 +12,14 @@
 
 namespace kbATeam\TypeCast\Exceptions;
 
-use kbATeam\TypeCast\TypeCastArray;
 use kbATeam\TypeCast\TypeCastValue;
 use Throwable;
 
 /**
  * Class kbATeam\TypeCast\Exceptions\InvalidValueException
  *
- * DESCRIPTION
+ * Exception thrown in case an invalid typecast is being assigned to an typecast
+ * array or object.
  *
  * @package kbATeam\TypeCast\Exceptions
  * @author  Gregor J.

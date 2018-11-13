@@ -2,7 +2,7 @@
 /**
  * File src/Exceptions/PropertyNameNotFoundException.php
  *
- * DESCRIPTION
+ * Exception in case a not existing property of a typecast object is requested.
  *
  * @package typecast
  * @author  Gregor J.
@@ -11,10 +11,12 @@
 
 namespace kbATeam\TypeCast\Exceptions;
 
+use Throwable;
+
 /**
  * Class kbATeam\TypeCast\Exceptions\PropertyNameNotFoundException
  *
- * DESCRIPTION
+ * Exception in case a not existing property of a typecast object is requested.
  *
  * @package kbATeam\TypeCast\Exceptions
  * @author  Gregor J.

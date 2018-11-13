@@ -2,7 +2,7 @@
 /**
  * File src/Exceptions/KeyNotFoundException.php
  *
- * DESCRIPTION
+ * Exception thrown for not existing array keys.
  *
  * @package typecast
  * @author  Gregor J.
@@ -16,7 +16,7 @@ use Throwable;
 /**
  * Class kbATeam\TypeCast\Exceptions\KeyNotFoundException
  *
- * DESCRIPTION
+ * Exception thrown for not existing array keys.
  *
  * @package kbATeam\TypeCast\Exceptions
  * @author  Gregor J.

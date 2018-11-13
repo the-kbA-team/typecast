@@ -2,7 +2,7 @@
 /**
  * File tests/Exceptions/KeyNotFoundExceptionTest.php
  *
- * DESCRIPTION
+ * Test the array key not found exception.
  *
  * @package typecast
  * @author  Gregor J.
@@ -16,7 +16,7 @@ use kbATeam\TypeCast\Exceptions\KeyNotFoundException;
 /**
  * Class Tests\kbATeam\TypeCast\Exceptions\KeyNotFoundExceptionTest
  *
- * DESCRIPTION
+ * Test the array key not found exception.
  *
  * @package Tests\kbATeam\TypeCast\Exceptions
  * @author  Gregor J.

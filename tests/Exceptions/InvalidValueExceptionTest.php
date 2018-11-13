@@ -2,7 +2,7 @@
 /**
  * File tests/Exceptions/InvalidValueExceptionTest.php
  *
- * DESCRIPTION
+ * Test the invalid typecast value exception.
  *
  * @package typecast
  * @author  Gregor J.
@@ -16,7 +16,7 @@ use kbATeam\TypeCast\Exceptions\InvalidTypeCastExeption;
 /**
  * Class Tests\kbATeam\TypeCast\Exceptions\InvalidValueExceptionTest
  *
- * DESCRIPTION
+ * Test the invalid typecast value exception.
  *
  * @package Tests\kbATeam\TypeCast\Exceptions
  * @author  Gregor J.

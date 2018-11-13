@@ -2,7 +2,7 @@
 /**
  * File src/Exceptions/InvalidKeyException.php
  *
- * DESCRIPTION
+ * Exception thrown for invalid array key types.
  *
  * @package typecast
  * @author  Gregor J.
@@ -17,7 +17,7 @@ use Throwable;
 /**
  * Class kbATeam\TypeCast\Exceptions\InvalidKeyException
  *
- * DESCRIPTION
+ * Exception thrown for invalid array key types.
  *
  * @package kbATeam\TypeCast\Exceptions
  * @author  Gregor J.
