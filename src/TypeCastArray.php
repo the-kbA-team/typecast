@@ -154,7 +154,7 @@ class TypeCastArray implements ITypeCast, \ArrayAccess
      * Whether a offset exists
      * @link  https://php.net/manual/en/arrayaccess.offsetexists.php
      * @param string|int $offset An offset to check for.
-     * @return boolean true on success or false on failure.
+     * @return bool true on success or false on failure.
      *                      The return value will be casted to boolean if
      *                      non-boolean was returned.
      * @since 5.0.0
