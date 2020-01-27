@@ -164,7 +164,7 @@ class TypeCastValue implements ITypeCast
      * @param mixed $value
      * @return string
      */
-    public static function toString($value)
+    public static function toString($value): string
     {
         return (string)$value;
     }

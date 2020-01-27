@@ -43,7 +43,7 @@ class TypeCastObject implements ITypeCast
      * Return an array of allowed array key types.
      * @return array
      */
-    public static function allowedPropertyTypes()
+    public static function allowedPropertyTypes(): array
     {
         return static::$allowedPropertyTypes;
     }

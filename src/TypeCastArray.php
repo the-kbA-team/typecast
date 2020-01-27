@@ -47,7 +47,7 @@ class TypeCastArray implements ITypeCast, ArrayAccess
      * Return an array of allowed array key types.
      * @return array
      */
-    public static function allowedKeyTypes()
+    public static function allowedKeyTypes(): array
     {
         return static::$allowedKeyTypes;
     }
