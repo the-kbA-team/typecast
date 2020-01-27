@@ -1,9 +1,7 @@
 # Typecast
 
 [![License: MIT][license-mit]](LICENSE)
-[![Build Status][build-status-master]][travis-ci]
-[![Maintainability][maintainability-badge]][maintainability]
-[![Test Coverage][coverage-badge]][coverage]
+[![Build Status][build-status-php5]][travis-ci]
 
 Typecast the values of any given data structure.
 
@@ -53,8 +51,4 @@ a:3:{s:10:"myIntValue";i:123;s:13:"myFloatValues";a:2:{i:0;d:3;i:1;d:4.5;}s:10:"
 
 [license-mit]: https://img.shields.io/badge/license-MIT-blue.svg
 [travis-ci]: https://travis-ci.org/the-kbA-team/typecast
-[build-status-master]: https://api.travis-ci.org/the-kbA-team/typecast.svg?branch=master
-[maintainability-badge]: https://api.codeclimate.com/v1/badges/8e1a6f3bf601d757a4a3/maintainability
-[maintainability]: https://codeclimate.com/github/the-kbA-team/typecast/maintainability
-[coverage-badge]: https://api.codeclimate.com/v1/badges/8e1a6f3bf601d757a4a3/test_coverage
-[coverage]: https://codeclimate.com/github/the-kbA-team/typecast/test_coverage
+[build-status-php5]: https://api.travis-ci.org/the-kbA-team/typecast.svg?branch=php5
