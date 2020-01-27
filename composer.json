@@ -3,11 +3,6 @@
   "description": "Typecast the values of any given data structure.",
   "type": "library",
   "license": "MIT",
-  "authors": [
-    {
-      "name": "Gregor J."
-    }
-  ],
   "minimum-stability": "stable",
   "require": {
     "php": ">=5.5.0"
