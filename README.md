@@ -10,7 +10,7 @@ Typecast the values of any given data structure.
 ## Installation
 
 ```
-composer install kba-team/typecast:dev-master
+composer install kba-team/typecast
 ```
 
 ## Usage
