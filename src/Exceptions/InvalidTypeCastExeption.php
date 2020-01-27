@@ -12,6 +12,7 @@
 
 namespace kbATeam\TypeCast\Exceptions;
 
+use Exception;
 use kbATeam\TypeCast\ITypeCast;
 use Throwable;
 
@@ -25,7 +26,7 @@ use Throwable;
  * @author  Gregor J.
  * @license MIT
  */
-class InvalidTypeCastExeption extends \Exception
+class InvalidTypeCastExeption extends Exception
 {
     /**
      * Construct the exception. Note: The message is NOT binary safe.
@@ -37,7 +38,7 @@ class InvalidTypeCastExeption extends \Exception
      */
     public function __construct(
         $code = 0,
-        \Throwable $previous = null
+        Throwable $previous = null
     ) {
         $message = sprintf(
             'Only instances of %s are allowed!',

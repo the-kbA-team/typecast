@@ -11,6 +11,8 @@
 
 namespace kbATeam\TypeCast;
 
+use ArrayAccess;
+use InvalidArgumentException;
 use kbATeam\TypeCast\Exceptions\InvalidKeyException;
 use kbATeam\TypeCast\Exceptions\InvalidTypeCastExeption;
 use kbATeam\TypeCast\Exceptions\KeyNotFoundException;
@@ -26,7 +28,7 @@ use kbATeam\TypeCast\Exceptions\KeyNotFoundException;
  * @author  Gregor J.
  * @license MIT
  */
-class TypeCastArray implements ITypeCast, \ArrayAccess
+class TypeCastArray implements ITypeCast, ArrayAccess
 {
     /**
      * @var array of array keys and their types.
@@ -85,7 +87,7 @@ class TypeCastArray implements ITypeCast, \ArrayAccess
     public function cast($array)
     {
         if (!is_array($array)) {
-            throw new \InvalidArgumentException(sprintf('Expected an array, but got %s!', gettype($array)));
+            throw new InvalidArgumentException(sprintf('Expected an array, but got %s!', gettype($array)));
         }
         foreach ($array as $key => $value) {
             //is this a repeating array?
@@ -95,9 +97,9 @@ class TypeCastArray implements ITypeCast, \ArrayAccess
                 $array[$key] = $this[$mapKey]->cast($value);
             } catch (KeyNotFoundException $knfex) {
                 //no key, no typecast, nothing happened.
-            } catch (\InvalidArgumentException $iaex) {
+            } catch (InvalidArgumentException $iaex) {
                 //unexpected value
-                throw new \InvalidArgumentException(
+                throw new InvalidArgumentException(
                     sprintf(
                         'Unexpected value for key %s: %s',
                         $key,

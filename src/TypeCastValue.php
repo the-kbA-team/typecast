@@ -11,6 +11,10 @@
 
 namespace kbATeam\TypeCast;
 
+use Closure;
+use InvalidArgumentException;
+use LogicException;
+
 /**
  * Class kbATeam\TypeCast\TypeCastValue
  *
@@ -63,10 +67,10 @@ class TypeCastValue implements ITypeCast
     {
         if (in_array($cast, static::$scalarTypes, true)) {
             $this->cast = static::scalarTypeMap($cast);
-        } elseif (is_callable($cast) || $cast instanceof \Closure) {
+        } elseif (is_callable($cast) || $cast instanceof Closure) {
             $this->cast = $cast;
         } else {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 __CLASS__
                 . ' expects constructor parameter to be either the name of a scalar'
                 . ' type, a callable or a Closure.'
@@ -97,7 +101,7 @@ class TypeCastValue implements ITypeCast
                 return static::class.'::toBool';
             //@codeCoverageIgnoreStart
             default:
-                throw new \LogicException(sprintf('Unexpected type %s', $type));
+                throw new LogicException(sprintf('Unexpected type %s', $type));
         }
         //@codeCoverageIgnoreEnd
     }

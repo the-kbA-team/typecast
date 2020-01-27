@@ -11,6 +11,7 @@
 
 namespace kbATeam\TypeCast\Exceptions;
 
+use Exception;
 use Throwable;
 
 /**
@@ -22,7 +23,7 @@ use Throwable;
  * @author  Gregor J.
  * @license MIT
  */
-class PropertyNameNotFoundException extends \Exception
+class PropertyNameNotFoundException extends Exception
 {
     /**
      * Construct the exception. Note: The message is NOT binary safe.
@@ -36,7 +37,7 @@ class PropertyNameNotFoundException extends \Exception
     public function __construct(
         $name,
         $code = 0,
-        \Throwable $previous = null
+        Throwable $previous = null
     ) {
         $message = sprintf(
             'Invalid property %s!',

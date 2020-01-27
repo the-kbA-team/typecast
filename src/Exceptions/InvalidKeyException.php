@@ -11,6 +11,7 @@
 
 namespace kbATeam\TypeCast\Exceptions;
 
+use Exception;
 use kbATeam\TypeCast\TypeCastArray;
 use Throwable;
 
@@ -23,7 +24,7 @@ use Throwable;
  * @author  Gregor J.
  * @license MIT
  */
-class InvalidKeyException extends \Exception
+class InvalidKeyException extends Exception
 {
     /**
      * Construct the exception. Note: The message is NOT binary safe.
@@ -35,7 +36,7 @@ class InvalidKeyException extends \Exception
      */
     public function __construct(
         $code = 0,
-        \Throwable $previous = null
+        Throwable $previous = null
     ) {
         $message = sprintf(
             'Array keys can only be %s',

@@ -11,6 +11,7 @@
 
 namespace kbATeam\TypeCast;
 
+use InvalidArgumentException;
 use kbATeam\TypeCast\Exceptions\InvalidTypeCastExeption;
 use kbATeam\TypeCast\Exceptions\PropertyNameNotFoundException;
 
@@ -70,15 +71,15 @@ class TypeCastObject implements ITypeCast
     public function cast($object)
     {
         if (!is_object($object)) {
-            throw new \InvalidArgumentException(sprintf('Expected an object, but got %s!', gettype($object)));
+            throw new InvalidArgumentException(sprintf('Expected an object, but got %s!', gettype($object)));
         }
         foreach ($this->map as $name => $type) {
             if (isset($object->{$name})) {
                 try {
                     $object->{$name} = $type->cast($object->{$name});
-                } catch (\InvalidArgumentException $iaex) {
+                } catch (InvalidArgumentException $iaex) {
                     //unexpected value
-                    throw new \InvalidArgumentException(
+                    throw new InvalidArgumentException(
                         sprintf(
                             'Unexpected value for property %s: %s',
                             $name,
