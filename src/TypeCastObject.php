@@ -117,7 +117,7 @@ class TypeCastObject implements ITypeCast
     /**
      * is utilized for reading data from inaccessible members.
      *
-     * @param $name string
+     * @param string $name
      * @return \kbATeam\TypeCast\ITypeCast
      * @throws \kbATeam\TypeCast\Exceptions\PropertyNameNotFoundException
      * @link https://php.net/manual/en/language.oop5.overloading.php#language.oop5.overloading.members
@@ -133,8 +133,8 @@ class TypeCastObject implements ITypeCast
     /**
      * run when writing data to inaccessible members.
      *
-     * @param $name  string
-     * @param $object \kbATeam\TypeCast\ITypeCast
+     * @param string                      $name
+     * @param \kbATeam\TypeCast\ITypeCast $object
      * @return void
      * @throws \kbATeam\TypeCast\Exceptions\InvalidTypeCastExeption
      * @link https://php.net/manual/en/language.oop5.overloading.php#language.oop5.overloading.members
@@ -152,7 +152,7 @@ class TypeCastObject implements ITypeCast
     /**
      * is triggered by calling isset() or empty() on inaccessible members.
      *
-     * @param $name string
+     * @param string $name
      * @return bool
      * @link https://php.net/manual/en/language.oop5.overloading.php#language.oop5.overloading.members
      */
@@ -164,7 +164,7 @@ class TypeCastObject implements ITypeCast
     /**
      * is invoked when unset() is used on inaccessible members.
      *
-     * @param $name string
+     * @param string $name
      * @return void
      * @link https://php.net/manual/en/language.oop5.overloading.php#language.oop5.overloading.members
      */
